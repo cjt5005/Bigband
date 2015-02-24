@@ -64,11 +64,9 @@ freq = 0:channelFs/nfft:(channelFs-channelFs/nfft);
 freq = 0:effectiveFs/(p*nfft):(effectiveFs-effectiveFs/(p*nfft));
 xf = zeros(size(freq));
 for i = 1:length(buckets)
-   [v,k] = min(abs(freqEst(i)-freq));
+   [v,k] = min(abs(freqEst(i)-freq))
    xf(k) = values(i);
    freq(k) = inf;
 end
 
-sEst = ifft(xf,nfft*p);
-
-plot(imag(sEst))
+s
