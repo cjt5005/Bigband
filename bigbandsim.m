@@ -16,13 +16,13 @@ timeDelays = [0;.33;1]*wrapTime;
 
 %% Signal Model
 
-% f = [0e6;140e6]; %signal frequencies
-% A = [1;1];
-% phi = rand(2,1)*2*pi;
+f = [85e6;140e6;450e6]; %signal frequencies
+A = [1;1;1];
+phi = rand(3,1)*2*pi;
 
-f=340e6;
-A=1;
-phi = rand()*2*pi;
+% f=340e6;
+% A=1;
+% phi = rand()*2*pi;
 %Generate signal at multiple delays
 [s,t] = sigGen(A,f,phi,effectiveFs,timeDelays,p*nfft);
 
@@ -86,10 +86,10 @@ sEst = ifft(xf,nfft*p);
 % subplot(313)
 % plot(abs(imag(sEst)-s(:,1)))
 
-% figure()
-% freq = 0:effectiveFs/(p*nfft):(effectiveFs-effectiveFs/(p*nfft));
-% subplot(121)
-% plot(freq/1e6,abs(fft(sEst,p*nfft)).^2)
-% subplot(122)
-% plot(pgram)
+figure()
+freq = 0:effectiveFs/(p*nfft):(effectiveFs-effectiveFs/(p*nfft));
+subplot(121)
+plot(freq/1e6,abs(fft(sEst,p*nfft)).^2)
+subplot(122)
+plot(pgram)
 
